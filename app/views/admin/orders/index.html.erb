@@ -1,0 +1,119 @@
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <div class="flex justify-between items-center">
+    <h1 class="font-bold text-4xl p-4">Orders</h1>
+    <%= link_to "New order", new_admin_order_path, class: "rounded-lg py-3 px-5 bg-purple-600 hover:bg-purple-900 text-white block font-medium" %>
+  </div>
+
+
+  <!-- Order table start -->
+  <div class="max-w-2xl mx-auto">
+<!--    Unfulfilled orders start-->
+    <div class="flex flex-col w-full mb-4">
+      <div class="overflow-x-auto shadow-md sm:rounded-lg">
+        <div class="inline-block min-w-full align-middle">
+          <div class="overflow-hidden ">
+            <h2 class="font-bold text-lg p-4">Unfulfilled Orders</h2>
+            <table class="min-w-full divide-y overflow-x-scroll divide-purple-200 table-fixed dark:divide-purple-700">
+              <thead class="bg-purple-100 dark:bg-purple-700">
+              <tr>
+                <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-purple-700 uppercase dark:text-purple-100">
+                  Order ID
+                </th>
+                <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-purple-700 uppercase dark:text-purple-100">
+                  Customer Email
+                </th>
+<!--                <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-purple-700 uppercase dark:text-purple-100">-->
+<!--                  Fulfilled-->
+<!--                </th>-->
+                <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-purple-700 uppercase dark:text-purple-100">
+                  Total
+                </th>
+                <th scope="col" class="p-4">
+                  <span class="sr-only">Edit</span>
+                </th>
+              </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-purple-200 dark:bg-purple-800 dark:divide-purple-700">
+              <% @not_fulfilled_orders.each do |o| %>
+                <tr class="hover:bg-purple-100 dark:hover:bg-purple-700">
+                  <td class="py-2 px-2 text-sm font-medium text-purple-500 whitespace-nowrap dark:text-white">
+                    <%= o.id %>
+                  </td>
+                  <td class="py-4 px-6 text-sm font-medium text-purple-900 whitespace-nowrap dark:text-white"><%= o.customer_email %></td>
+<!--                  <td class="py-4 px-6 text-sm font-medium text-purple-500 whitespace-nowrap dark:text-white"><%#= o.fulfilled %></td>-->
+                  <td class="py-4 px-6 text-sm font-medium text-purple-900 whitespace-nowrap dark:text-white">
+                    KSH. <%= number_to_currency(o.total, unit: '', separator: '.', delimeter: ',', precision: 0) %>
+                  </td>
+                  <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
+                    <%= link_to "Edit", edit_admin_order_path(o), class: "text-blue-600 dark:text-blue-500 hover:underline" %>
+                  </td>
+                </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+<!--    Unfulfilled orders end-->
+
+<!--    Fulfilled orders start-->
+    <div class="flex flex-col w-full mb-4">
+      <div class="overflow-x-auto shadow-md sm:rounded-lg">
+        <div class="inline-block min-w-full align-middle">
+          <div class="overflow-hidden ">
+            <h2 class="font-bold text-lg p-4">Fulfilled Orders</h2>
+            <table class="min-w-full divide-y overflow-x-scroll divide-purple-200 table-fixed dark:divide-purple-700">
+              <thead class="bg-purple-100 dark:bg-purple-700">
+              <tr>
+                <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-purple-700 uppercase dark:text-purple-100">
+                  Order ID
+                </th>
+                <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-purple-700 uppercase dark:text-purple-100">
+                  Customer Email
+                </th>
+<!--                <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-purple-700 uppercase dark:text-purple-100">-->
+<!--                  Fulfilled-->
+<!--                </th>-->
+                <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-purple-700 uppercase dark:text-purple-100">
+                  Total
+                </th>
+                <th scope="col" class="p-4">
+                  <span class="sr-only">Edit</span>
+                </th>
+              </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-purple-200 dark:bg-purple-800 dark:divide-purple-700">
+              <% @fulfilled_orders.each do |o| %>
+                <tr class="hover:bg-purple-100 dark:hover:bg-purple-700">
+                  <td class="py-2 px-2 text-sm font-medium text-purple-500 whitespace-nowrap dark:text-white">
+                    <%= o.id %>
+                  </td>
+                  <td class="py-4 px-6 text-sm font-medium text-purple-900 whitespace-nowrap dark:text-white"><%= o.customer_email %></td>
+<!--                  <td class="py-4 px-6 text-sm font-medium text-purple-500 whitespace-nowrap dark:text-white"><%#= o.fulfilled %></td>-->
+                  <td class="py-4 px-6 text-sm font-medium text-purple-900 whitespace-nowrap dark:text-white">
+                    KSH. <%= number_to_currency(o.total, unit: '', separator: '.', delimeter: ',', precision: 0) %>
+                  </td>
+                  <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
+                    <%= link_to "Edit", edit_admin_order_path(o), class: "text-blue-600 dark:text-blue-500 hover:underline" %>
+                  </td>
+                </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+<!--Fullfileed orders end-->
+  </div>
+  <!--  Order table end-->
+
+<!--  <div id="admin_orders" class="min-w-full">-->
+    <%#= render @admin_orders %>
+<!--  </div>-->
+</div>

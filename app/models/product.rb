@@ -4,7 +4,7 @@ class Product < ApplicationRecord
   # end
   belongs_to :category
   has_many :stocks
-
+  has_many :order_products
   has_many_attached :images
 
   def images_as_thumbnail
