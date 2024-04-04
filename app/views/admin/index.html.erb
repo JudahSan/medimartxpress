@@ -13,7 +13,7 @@
       <div class="px-6 py-4">
         <div class="font-bold uppercase text-xl mb-2 text-white">Total Sales</div>
         <p class="text-white text-base">
-          <%= @quick_stats[:sales] ? (@quick_stats[:sales]).to_s : '0' %>
+          <%= @quick_stats[:sales] ? (@quick_stats[:sales]).to_s : '1000' %>
         </p>
       </div>
     </div>
@@ -35,11 +35,50 @@
     </div>
   </div>
 
-  <div data-contoller="dashboard">
-    <canvas id="revenueChart">
+  <div class="my-8 w-full">
+    <h2 class="text-2xl text-purple-800 font-medium mb-4">Revenue</h2>
+    <div class="w-full" data-controller="dashboard" data-dashboard-revenue-value="<%= @revenue_by_day.to_json %>">
+      <canvas id="revenueChart">
 
-    </canvas>
+      </canvas>
+    </div>
   </div>
+
+  <div class="flex flex-col w-full">
+    <h2 class="text-2xl text-purple-800 mb-4 font-medium">Recent Unfulfilled Orders</h2>
+    <div class="overflow-x-auto">
+      <table class="min-w-full divide-y overflow-x-scroll divide-purple-200 table-fixed dark:divide-purple-700">
+        <thead class="bg-purple-100 dark:bg-purple-700">
+        <tr>
+          <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-purple-700 uppercase dark:text-purple-100">
+            Order ID
+          </th>
+          <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-purple-700 uppercase dark:text-purple-100">
+            Customer
+          </th>
+          <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-purple-700 uppercase dark:text-purple-100">
+            Date
+          </th>
+          <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-purple-700 uppercase dark:text-purple-100">
+            Amount
+          </th>
+        </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-purple-200 dark:bg-purple-800 dark:divide-purple-700">
+        <% @orders.each do |order| %>
+          <tr class="hover:bg-purple-100 dark:hover:bg-purple-700">
+            <td class="py-4 px-6 text-sm font-medium text-purple-500 whitespace-nowrap dark:text-white"><%= link_to order.id, admin_order_path(order), class: "underline" %></td>
+            <td class="py-4 px-6 text-sm font-medium text-purple-900 whitespace-nowrap dark:text-white"><%= order.customer_email %></td>
+            <td class="py-4 px-6 text-sm font-medium text-purple-500 whitespace-nowrap dark:text-white"><%= order.created_at.strftime("%B %d, %Y %H:%M") %></td>
+            <td class="py-4 px-6 text-sm font-medium text-purple-900 whitespace-nowrap dark:text-white"><%= number_to_currency(order.total, unit: '', separator: '.', delimeter: ',', precision: 0) %></td>
+          </tr>
+        <% end %>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+
 
 </div>
 
