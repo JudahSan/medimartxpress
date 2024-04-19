@@ -71,3 +71,9 @@ gem "devise", "~> 4.9"
 gem "font-awesome-sass", "~> 6.5.1"
 
 gem "tailwindcss-rails", "~> 2.3"
+
+gem 'rubocop-rails', '~> 2.23', '>= 2.23.1'
+
+gem 'rubocop', require: false
+
+gem 'rubocop-discourse', require: false

@@ -19,3 +19,81 @@
 @tailwind utilities;
 
 @import "font-awesome";
+
+:root {
+  --light-bg-color: white;
+  --light-text-color: white;
+  --dark-bg-color: black;
+  --dark-text-color: black;
+}
+
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: var(--dark-bg-color);
+    color: var(--light-text-color);
+
+  }
+
+  body.light {
+
+      background: var(--light-bg-color);
+      color: var(--dark-text-color);
+
+  }
+  nav {
+    background: var(--dark-bg-color);
+    color: var(--light-text-color);
+
+  }
+
+  nav.light {
+
+    background: var(--light-bg-color);
+    color: var(--dark-text-color);
+
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    background: var(--light-bg-color);
+    color: var(--dark-text-color);
+
+  }
+
+  body.light {
+
+    background: var(--dark-bg-color);
+    color: var(--light-text-color);
+
+  }
+
+  nav {
+    background: var(--light-bg-color);
+    color: var(--dark-text-color);
+
+  }
+
+  nav.light {
+
+    background: var(--dark-bg-color);
+    color: var(--light-text-color);
+
+  }
+}
+
+@media only screen and (min-width: 768px){
+  .parent:hover .child {
+    opacity:1;
+    height:auto;
+    overflow:none;
+    transform: translateY(0);
+  }
+  .child {
+    opacity:0;
+    height:0;
+    overflow:hidden;
+    transform: translateY(-10%);
+  }
+}

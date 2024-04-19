@@ -22,4 +22,9 @@ Rails.application.routes.draw do
 
   # setup admin index route
   get "admin" => "admin#index"
+
+  # dark-light mode
+  get "set_theme", to: "theme#index"
+
+  get "category" => "category#index"
 end
