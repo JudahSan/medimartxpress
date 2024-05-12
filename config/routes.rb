@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'about/index'
   namespace :admin do
     resources :orders
     resources :products do
@@ -15,6 +16,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "home#index"
+
+  # About page
+  get '/about', to: 'about#index'
 
   authenticated :admin_users do
     root to: "admin#index", as: :admin_root

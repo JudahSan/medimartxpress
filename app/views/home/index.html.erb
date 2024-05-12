@@ -1,9 +1,10 @@
 <div class="flex flex-wrap justify-center items-center gap-10">
-  <div class=" bg-purple-600 text-center py-20 w-full">
-    <h1 class="text-5xl font-bold mb-4">Welcome to Utibu Health</h1>
-    <p class="text-xl mb-8">Fostering accessibility for all Kenyans, Utibu Health is steadfast in providing a seamless
+  <div class=" bg-green-600 text-center py-20 w-full background-image">
+    <h1 class="text-5xl font-bold text-white mb-8">Welcome to Utibu Health</h1>
+    <p class="text-xl mb-8 font-semibold text-gray-300">Fostering accessibility for all Kenyans, Utibu Health is
+      steadfast in providing a seamless
       experience for accessing premium, secure, and budget-friendly medicine and wellness products online.</p>
-    <%= link_to "Start Shopping with Utibu", root_path, class: "bg-purple-500 hover:bg-purple-300 font-bold py-2 px-4 rounded" %>
+    <%= link_to "Start Shopping with Utibu", root_path, class: "bg-green-500 hover:bg-green-300 font-bold py-2 px-4 rounded" %>
   </div>
 
   <!--  Categories section-->
@@ -18,12 +19,12 @@
   <% end %>
 
   <!--Testimonials section-->
-  <div class=" py-10 my-10">
+  <div class="bg-gray-100 bg-opacity-25 py-10 my-10">
     <div class="container mx-auto px-6">
       <h2 class="text-4xl font-bold text-center my-10">Customer Testimonials</h2>
       <div class="flex flex-wrap justify-center">
         <div class="w-full md:w-1/3 px-2 mb-4">
-          <div class="rounded shadow py-4 px-4">
+          <div class="bg-gray-100 bg-opacity-25 rounded shadow py-4 px-4">
             <p class="text-base mb-4">
               "Utibu Health has revolutionized the way I manage my health needs. With just a few clicks, I can
               conveniently order my medications and wellness products from the comfort of my home. The app's
@@ -37,7 +38,7 @@
           </div>
         </div>
         <div class="w-full md:w-1/3 px-2 mb-4">
-          <div class="rounded shadow py-4 px-4">
+          <div class="bg-gray-100 bg-opacity-25 rounded shadow py-4 px-4">
             <p class="text-base mb-4">
               "Utibu Health has revolutionized the way I manage my health needs. With just a few clicks, I can
               conveniently order my medications and wellness products from the comfort of my home. The app's
@@ -51,7 +52,7 @@
           </div>
         </div>
         <div class="w-full md:w-1/3 px-2 mb-4">
-          <div class="rounded shadow py-4 px-4">
+          <div class="bg-gray-100 bg-opacity-25 rounded shadow py-4 px-4">
             <p class="text-base mb-4">
               "Utibu Health has revolutionized the way I manage my health needs. With just a few clicks, I can
               conveniently order my medications and wellness products from the comfort of my home. The app's
@@ -66,6 +67,27 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="bg-gray-500 text-white my-10 text-center py-20 pl-4 pr-4">
+    <h2 class="text-3xl font-bold mb-6">🎉 Stay Healthy and Informed with Utibu Health! 🎉</h2>
+    <p class="text-lg text-gray-700 mb-6">Sign up for our newsletter to receive exclusive offers, health tips, and
+      updates
+      on the latest in medicine and wellness products. Whether you're looking for expert advice on managing your health
+      or
+      seeking special discounts on your favorite products, our newsletter has you covered.</p>
+<!--    <div class="mb-6 text-left pl-4">-->
+<!--      <p class="text-lg text-gray-700 mb-2  ">Benefits of Subscribing:</p>-->
+<!--      <ul class="">-->
+<!--        <li class="mb-1">🔔 Early access to promotions and discounts</li>-->
+<!--        <li class="mb-1">📰 Latest health news and updates</li>-->
+<!--        <li class="mb-1">💊 Expert tips on medication management and wellness</li>-->
+<!--      </ul>-->
+<!--    </div>-->
+
+    <%= form_with url: root_path, method: :post, local: true, class: "flex justify-center" do %>
+      <%= email_field_tag :email, nil, placeholder: "Enter your email", class: "p-2 rounded-l " %>
+      <%= submit_tag "Subscribe", class: "bg-gray-700 hover:bg-gray-900 cursor-pointer text-white font-bold py-2 px-4 rounded-r" %>
+    <% end %>
   </div>
 </div>
 

@@ -83,6 +83,13 @@
   }
 }
 
+.background-image {
+  background-image: url('./banner2.jpg');
+  background-size: cover; /* or contain, depending on how you want the image to fit */
+  background-position: center center; /* or any other desired position */
+}
+
+
 @media only screen and (min-width: 768px){
   .parent:hover .child {
     opacity:1;

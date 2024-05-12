@@ -77,3 +77,5 @@ gem 'rubocop-rails', '~> 2.23', '>= 2.23.1'
 gem 'rubocop', require: false
 
 gem 'rubocop-discourse', require: false
+
+gem 'bundle-audit'
