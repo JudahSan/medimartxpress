@@ -24,11 +24,16 @@ Rails.application.routes.draw do
     root to: "admin#index", as: :admin_root
   end
 
+  # display categories
+  resources :categories, only: [:show]
+
+  # display products
+  resources :products, only: [:show]
+
   # setup admin index route
   get "admin" => "admin#index"
 
   # dark-light mode
   get "set_theme", to: "theme#index"
 
-  get "category" => "category#index"
 end

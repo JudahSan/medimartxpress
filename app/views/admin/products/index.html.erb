@@ -9,55 +9,46 @@
   </div>
 
   <!-- Product table start -->
-  <div class="max-w-2xl mx-auto">
-    <div class="flex flex-col">
-      <div class="overflow-x-auto shadow-md sm:rounded-lg">
-        <div class="inline-block min-w-full align-middle">
-          <div class="overflow-hidden ">
-            <table class="min-w-full divide-y overflow-x-scroll divide-purple-200 table-fixed dark:divide-purple-700">
-              <thead class="bg-purple-100 dark:bg-purple-700">
-              <tr>
-                <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-purple-700 uppercase dark:text-purple-100">
+  <div class="relative overflow-x-auto">
+    <table class="min-w-full divide-y overflow-x-scroll divide-purple-200 table-fixed dark:divide-purple-700">
+      <thead class="bg-purple-100 dark:bg-purple-700">
+      <tr>
+        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-purple-700 uppercase dark:text-purple-100">
 
-                </th>
-                <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-purple-700 uppercase dark:text-purple-100">
-                  Name
-                </th>
-                <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-purple-700 uppercase dark:text-purple-100">
-                  Description
-                </th>
-                <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-purple-700 uppercase dark:text-purple-100">
-                  Price
-                </th>
-                <th scope="col" class="p-4">
-                  <span class="sr-only">Edit</span>
-                </th>
-              </tr>
-              </thead>
-              <tbody class="bg-white divide-y divide-purple-200 dark:bg-purple-800 dark:divide-purple-700">
-              <% @admin_products.each do |p| %>
-                <tr class="hover:bg-purple-100 dark:hover:bg-purple-700">
-                  <td class="py-2 px-2 text-sm font-medium text-purple-500 whitespace-nowrap dark:text-white">
-                    <%#= p.images.any? ? image_tag(p.images.first.variant(:thumb)) : image_tag("https://via.placeholder.com/50") %>
-                    <%= p.images.any? ? image_tag(p.images_as_thumbnail) : image_tag("https://via.placeholder.com/50") %>
-                  </td>
-                  <td class="py-4 px-6 text-sm font-medium text-purple-900 whitespace-nowrap dark:text-white"><%= p.name %></td>
-                  <td class="py-4 px-6 text-sm font-medium text-purple-500 whitespace-nowrap dark:text-white"><%= p.description %></td>
-                  <td class="py-4 px-6 text-sm font-medium text-purple-900 whitespace-nowrap dark:text-white">
-                    KSH. <%= number_to_currency(p.price, unit: '', separator: '.', delimeter: ',', precision: 0) %>
-                  </td>
-                  <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
-                    <%= link_to "Edit", edit_admin_product_path(p), class: "text-blue-600 dark:text-blue-500 hover:underline" %>
-                  </td>
-                </tr>
-              <% end %>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-
+        </th>
+        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-purple-700 uppercase dark:text-purple-100">
+          Name
+        </th>
+        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-purple-700 uppercase dark:text-purple-100">
+          Description
+        </th>
+        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-purple-700 uppercase dark:text-purple-100">
+          Price
+        </th>
+        <th scope="col" class="p-4">
+          <span class="sr-only">Edit</span>
+        </th>
+      </tr>
+      </thead>
+      <tbody class="bg-white divide-y divide-purple-200 dark:bg-purple-800 dark:divide-purple-700">
+      <% @admin_products.each do |p| %>
+        <tr class="hover:bg-purple-100 dark:hover:bg-purple-700">
+          <td class="py-2 px-2 text-sm font-medium text-purple-500 whitespace-nowrap dark:text-white">
+            <%#= p.images.any? ? image_tag(p.images.first.variant(:thumb)) : image_tag("https://via.placeholder.com/50") %>
+            <%= p.images.any? ? image_tag(p.images_as_thumbnail) : image_tag("https://via.placeholder.com/50") %>
+          </td>
+          <td class="py-4 px-6 text-sm font-medium text-purple-900 whitespace-nowrap dark:text-white"><%= p.name %></td>
+          <td class="py-4 px-6 text-sm font-medium text-purple-500 whitespace-nowrap dark:text-white"><%= truncate(p.description, length: 50, separator: ' ') %></td>
+          <td class="py-4 px-6 text-sm font-medium text-purple-900 whitespace-nowrap dark:text-white">
+            KSH. <%= number_to_currency(p.price, unit: '', separator: '.', delimeter: ',', precision: 0) %>
+          </td>
+          <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
+            <%= link_to "Edit", edit_admin_product_path(p), class: "text-blue-600 dark:text-blue-500 hover:underline" %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
   </div>
-  <!--  Product table end-->
 </div>
+<!--  Product table end-->

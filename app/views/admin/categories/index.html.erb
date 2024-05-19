@@ -7,50 +7,42 @@
     <h1 class="font-bold text-4xl p-4">Categories</h1>
     <%= link_to "New category", new_admin_category_path, class: "rounded-lg py-3 px-5 bg-purple-600 text-white block font-medium hover:bg-purple-700" %>
   </div>
-<!-- Category table start -->
-  <div class="max-w-2xl mx-auto">
-    <div class="flex flex-col">
-      <div class="overflow-x-auto shadow-md sm:rounded-lg">
-        <div class="inline-block min-w-full align-middle">
-          <div class="overflow-hidden ">
-            <table class="min-w-full divide-y overflow-x-scroll divide-purple-200 table-fixed dark:divide-purple-700">
-              <thead class="bg-purple-100 dark:bg-purple-700">
-              <tr>
-                <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-purple-700 uppercase dark:text-purple-100">
+  <!-- Category table start -->
+  <div class="relative overflow-x-auto">
+    <table class="min-w-full divide-y overflow-x-scroll divide-purple-200 table-fixed dark:divide-purple-700">
+      <thead class="bg-purple-100 dark:bg-purple-700">
+      <tr>
+        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-purple-700 uppercase dark:text-purple-100">
 
-                </th>
-                <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-purple-700 uppercase dark:text-purple-100">
-                  Product Name
-                </th>
-                <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-purple-700 uppercase dark:text-purple-100">
-                  Description
-                </th>
-                <th scope="col" class="p-4">
-                  <span class="sr-only">Edit</span>
-                </th>
-              </tr>
-              </thead>
-              <tbody class="bg-white divide-y divide-purple-200 dark:bg-purple-800 dark:divide-purple-700">
-              <% @admin_categories.each do |c| %>
-                <tr class="hover:bg-purple-100 dark:hover:bg-purple-700">
-                  <td class="py-2 px-2 text-sm font-medium text-purple-500 whitespace-nowrap dark:text-white">
-                    <%#= image_tag(c.thumbnail) %>
-                    <%= c.image.present? ? image_tag(c.image_as_thumbnail) : image_tag("https://via.placeholder.com/50") %>
-                  </td>
-                  <td class="py-4 px-6 text-sm font-medium text-purple-900 whitespace-nowrap dark:text-white"><%= c.name %></td>
-                  <td class="py-4 px-6 text-sm font-medium text-purple-500 whitespace-nowrap dark:text-white"><%= c.description %></td>
-                  <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
-                    <%= link_to "Edit", edit_admin_category_path(c), class: "text-blue-600 dark:text-blue-500 hover:underline" %>
-                  </td>
-                </tr>
-              <% end %>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
+        </th>
+        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-purple-700 uppercase dark:text-purple-100">
+          Product Name
+        </th>
+        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-purple-700 uppercase dark:text-purple-100">
+          Description
+        </th>
+        <th scope="col" class="p-4">
+          <span class="sr-only">Edit</span>
+        </th>
+      </tr>
+      </thead>
+      <tbody class="bg-white divide-y divide-purple-200 dark:bg-purple-800 dark:divide-purple-700">
+      <% @admin_categories.each do |c| %>
+        <tr class="hover:bg-purple-100 dark:hover:bg-purple-700">
+          <td class="py-2 px-2 text-sm font-medium text-purple-500 whitespace-nowrap dark:text-white">
+            <%#= image_tag(c.thumbnail) %>
+            <%= c.image.present? ? image_tag(c.image_as_thumbnail) : image_tag("https://via.placeholder.com/50") %>
+          </td>
+          <td class="py-4 px-6 text-sm font-medium text-purple-900 whitespace-nowrap dark:text-white"><%= c.name %></td>
+          <td class="py-4 px-6 text-sm font-medium text-purple-500 whitespace-nowrap dark:text-white"><%= truncate(c.description, length: 50, separator: ' ') %></td>
+          <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
+            <%= link_to "Edit", edit_admin_category_path(c), class: "text-blue-600 dark:text-blue-500 hover:underline" %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
 
+    <!--  Category table end-->
   </div>
-  <!--  Category table end-->
 </div>

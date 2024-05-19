@@ -10,4 +10,8 @@ class Product < ApplicationRecord
   def images_as_thumbnail
     images.first.variant(resize_to_fill: [50, 50]).processed
   end
+
+  def images_as_category_section
+    images.first.variant(resize_to_fill: [300, 300]).processed
+  end
 end
