@@ -5,6 +5,9 @@ Chart.register(...registerables)
 
 // Connects to data-controller="dashboard"
 export default class extends Controller {
+  connect() {
+    console.log("wololo")
+  }
   static values = {  revenue: Array }
   initialize() {
     const data = this.revenueValue.map((item) => item[1])

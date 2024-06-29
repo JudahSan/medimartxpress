@@ -3,6 +3,7 @@
     "tailwindcss": "^3.4.3"
   },
   "dependencies": {
+    "@hotwired/stimulus": "^3.2.2",
     "flowbite": "^2.3.0"
   }
 }
