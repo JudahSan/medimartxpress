@@ -33,6 +33,9 @@ Rails.application.routes.draw do
   # setup admin index route
   get "admin" => "admin#index"
 
+  # cart route
+  get "cart" => 'carts#show'
+
   # dark-light mode
   get "set_theme", to: "theme#index"
 
