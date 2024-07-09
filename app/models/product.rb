@@ -14,4 +14,8 @@ class Product < ApplicationRecord
   def images_as_category_section
     images.first.variant(resize_to_fill: [300, 300]).processed
   end
+
+  # def images_as_cart_section
+  #   images.first.variant(resize_to_fill: [300, 300]).processed
+  # end
 end
