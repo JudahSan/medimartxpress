@@ -30,10 +30,29 @@ Sure, here's a basic guide to help someone set up the Rails project on their loc
       bundle install
       ```
 
-6. **Configure the Database:**
+6. **Install Postgres and create user**
+   - Install Postgres
+     ```
+     sudo apt-get update
+     sudo apt install postgresql postgresql-contrib libpq-dev
+     ```
+   - `postgresql` is a general database package. 
+   - `postgresql-contrib` contains additional utilities and functionality. 
+   - `libpq-dev` use for compiling C programs communicate with Postgres.
+   - Let’s switch to postgres account to access to psql — terminal-based Postgres front-end program.
+     ```
+     sudo -i -u postgres
+     psql
+     ```
+   - Now there is postgres=# environment. To create a new role enter the following command.
+      ```
+      CREATE ROLE <your_username> LOGIN SUPERUSER PASSWORD '<your_password>';
+      ```
+7. **Create Database:** `bin/rails db:create`
+8. **Configure the Database:**
     - Instruct the user to configure the database by updating the `config/database.yml` file with their database credentials. They may need to create the corresponding database in their development environment.
 
-7. **Run Migrations:**
+9. **Run Migrations:**
     - After configuring the database, guide the user to run the database migrations using the following command:
       ```
       rails db:migrate
@@ -42,7 +61,7 @@ Sure, here's a basic guide to help someone set up the Rails project on their loc
 8. **Start the Rails Server:**
     - Once the migrations are complete, instruct the user to start the Rails server using the following command:
       ```
-      rails server
+      ./bin/dev
       ```
 
 9. **Verify Installation:**
