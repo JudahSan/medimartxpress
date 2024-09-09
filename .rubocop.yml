@@ -1,4 +1,13 @@
+require:
+  - rubocop-rails
+  - rubocop-capybara
+  - rubocop-performance
+
 AllCops:
+  NewCops: enable
+  SuggestExtensions:
+    rubocop-rake: false
+
   Exclude:
     - db/migrate/**/*
     - db/schema.rb
@@ -14,9 +23,6 @@ AllCops:
     - Rakefile
     - config.ru
 
-require:
-  - rubocop-rails
-  - rubocop-capybara
 Style/Encoding:
   Enabled: false
 
