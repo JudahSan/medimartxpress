@@ -36,6 +36,9 @@ Rails.application.routes.draw do
   # cart route
   get "cart" => 'carts#show'
 
+  # checkout route
+  post "checkout" => 'checkouts#create'
+
   # dark-light mode
   get "set_theme", to: "theme#index"
 

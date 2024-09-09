@@ -1,25 +1,35 @@
 <section class="bg-white py-8 antialiased dark:bg-black md:py-16">
   <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
-    <h2 class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">Shopping Cart</h2>
+    <h1 class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">Shopping Cart</h1>
+    <div class="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8"></div>
+    <div id="errorContainer"></div>
 
     <div data-controller="cart">
-      <div class="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
-        <div class="mx-auto w-full flex-none lg:max-w-2xl xl:max-w-4xl">
+      <!-- Two-column layout for Cart Items and Order Summary -->
+      <div class="mt-6 sm:mt-8 lg:grid lg:grid-cols-4 lg:gap-8">
+
+        <!-- Cart Items Section -->
+        <div class="col-span-3 mx-auto w-full lg:max-w-none">
           <div class="space-y-6" id="cart-items">
             <!-- Cart items will be injected here by Stimulus -->
           </div>
         </div>
 
-        <div class="mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full">
+        <!-- Order Summary Section -->
+        <div class="mx-auto w-full lg:max-w-none">
           <div class="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6">
-            <p class="text-xl font-semibold text-gray-900 dark:text-white">Order summary</p>
-            <div id="total" class="space-y-4">
+            <p class="text-xl font-semibold text-gray-900 dark:text-white">Order Summary</p>
+
+            <div id="total" class="mt-4 font-medium">
               <!-- Total will be injected here by Stimulus -->
             </div>
+
             <button data-action="click->cart#checkout" type="button" class="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Proceed to Checkout</button>
-            <button type="button" data-action="click->cart#clearCart" class="py-2.5 px-8 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-red-500 rounded-lg border border-red-200 hover:bg-red-100 hover:text-red-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Clear cart</button>
+
+            <button type="button" data-action="click->cart#clear" class="mt-6 py-2.5 px-8 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-red-500 rounded-lg border border-red-200 hover:bg-red-100 hover:text-red-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Clear Cart</button>
           </div>
         </div>
+
       </div>
     </div>
   </div>
