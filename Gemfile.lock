@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/ctran/annotate_models.git
+  revision: 5d01c4171990c4fe7b9b0977b05ce14a98209e53
+  specs:
+    annotate (3.2.0)
+      activerecord (>= 3.2, < 8.0)
+      rake (>= 10.4, < 14.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -342,6 +350,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  annotate!
   bootsnap
   bundle-audit
   capybara
