@@ -28,5 +28,14 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
-  health: "Afya"
+  user_mailer:
+    welcome_email:
+      subject: "Welcome to Utibu Health"
+      body: "Hello %{name}, welcome to our platform!"
+  admin_categories:
+    create:
+      success: "Category was successfully created."
+    update:
+      success: "Category was successfully updated."
+    destroy:
+      success: "Category was successfully destroyed."

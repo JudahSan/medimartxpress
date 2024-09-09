@@ -120,3 +120,8 @@ Security(TODO)
 **Deployment** (TODO)
 
 * Deploy the app to Render.
+
+Adding secret keys
+-
+
+`EDITOR="code --wait" rails credentials:edit --environment=development`

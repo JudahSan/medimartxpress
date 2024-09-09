@@ -81,3 +81,5 @@ gem 'rubocop', require: false
 gem 'rubocop-discourse', require: false
 
 gem 'bundle-audit'
+
+gem 'stripe'
