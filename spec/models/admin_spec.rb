@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: admins
@@ -16,7 +18,7 @@
 #  index_admins_on_email                 (email) UNIQUE
 #  index_admins_on_reset_password_token  (reset_password_token) UNIQUE
 #
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Admin, type: :model do
   it "is valid with valid attributes" do
@@ -30,6 +32,6 @@ RSpec.describe Admin, type: :model do
   end
 
   it "is not valid without password" do
-    admin = Admin.new(email: "admin@example.com", password:nil)
+    Admin.new(email: "admin@example.com", password: nil)
   end
 end

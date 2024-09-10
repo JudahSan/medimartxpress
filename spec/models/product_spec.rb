@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: products
@@ -19,18 +21,20 @@
 #
 #  fk_rails_...  (category_id => categories.id)
 #
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Product, type: :model do
   it "is valid with valid attributes" do
     category = Category.create(name: "Supplements", description: "All medical supplements")
-    product = Product.new(name: "Vitamin D test", description: "A Vitamin D test supplement", price: 1000, category: category)
+    product = Product.new(name: "Vitamin D test", description: "A Vitamin D test supplement",
+                          price: 1000, category:)
     expect(product).to be_valid
   end
 
   it "is not valid without a name" do
     category = Category.create(name: "Supplements", description: "All medical supplements")
-    product = Product.new(name: nil, description: "A Vitamin D test supplement", price: 1000, category: category)
+    product = Product.new(name: nil, description: "A Vitamin D test supplement", price: 1000,
+                          category:)
     expect(product).to_not be_valid
   end
 
@@ -56,5 +60,4 @@ RSpec.describe Product, type: :model do
   #     # product.images.attach(io: File.open('path/to/image.jpg'), filename: 'image.jpg', content_type: 'image/jpeg')
   #     # expect(product.images_as_thumbnail).to be_present
   #   end
-
 end

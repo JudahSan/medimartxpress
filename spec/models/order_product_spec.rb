@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: order_products
@@ -20,14 +22,14 @@
 #  fk_rails_...  (order_id => orders.id)
 #  fk_rails_...  (product_id => products.id)
 #
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe OrderProduct, type: :model do
   let(:product) { create(:product) }
   let(:order) { create(:order) }
 
   it "is valid with valid attributes" do
-    order_product = OrderProduct.new(product: product, order: order, size: "M", quantity: 2)
+    order_product = OrderProduct.new(product:, order:, size: "M", quantity: 2)
     expect(order_product).to be_valid
   end
 

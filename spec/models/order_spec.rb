@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: orders
@@ -10,11 +12,12 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Order, type: :model do
   it "is valid with valid attributes" do
-    order = Order.new(customer_email: "customer@example.com", total: 100, fulfilled: false, address: "123 Street")
+    order = Order.new(customer_email: "customer@example.com", total: 100, fulfilled: false,
+                      address: "123 Street")
     expect(order).to be_valid
   end
 

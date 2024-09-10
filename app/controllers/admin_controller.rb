@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AdminController < ApplicationController
   layout "admin"
   # require user authentication
@@ -12,11 +14,11 @@ class AdminController < ApplicationController
       average_sale: Order.where(created_at: Time.zone.now.midnight..Time.zone.now).average(:total)&.round(),
       pre_sale:     OrderProduct.joins(:order).where(orders: { created_at: Time.zone.now.midnight..Time.zone.now }).average(:quantity)
     }
-    @orders_by_day = Order.where("created_at > ?", Time.zone.now - 7.days).order(:created_at)
+    @orders_by_day = Order.where("created_at > ?", 7.days.ago).order(:created_at)
     @orders_by_day = @orders_by_day.group_by { |order| order.created_at.to_date }
-    @revenue_by_day = @orders_by_day.map do |day, orders|
+    @revenue_by_day = @orders_by_day.to_h do |day, orders|
       [day.strftime("%A"), orders.sum(&:total)]
-    end.to_h
+    end
     return unless @revenue_by_day.count < 7
 
     days_of_week = %w[Monday Tuesday Wednesday Thursday Friday Saturday Sunday]

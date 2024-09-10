@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ThemeController < ApplicationController
   def index
     cookies[:theme] = params[:theme]

@@ -1,9 +1,14 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe "Admin::Categories", type: :request do
   let(:category) { create(:category) }
-  let(:valid_attributes) { { name: 'New Category', description: 'Category Description', image: Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/sample_image.jpeg'), 'image/jpeg') } }
-  let(:invalid_attributes) { { name: ' ' } }
+  let(:valid_attributes) do
+    { name: "New Category", description: "Category Description",
+   image: Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/sample_image.jpeg"), "image/jpeg") }
+  end
+  let(:invalid_attributes) { { name: " " } }
   before do
     @user = FactoryBot.create(:admin)
     sign_in @user
@@ -31,5 +36,4 @@ RSpec.describe "Admin::Categories", type: :request do
       expect(response).to have_http_status(:ok)
     end
   end
-
 end

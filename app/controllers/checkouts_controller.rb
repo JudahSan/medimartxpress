@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CheckoutsController < ApplicationController
   def create
     stripe_secret_key = Rails.application.credentials.dig(:stripe, :secret_key)
@@ -8,26 +10,26 @@ class CheckoutsController < ApplicationController
       {
         price_data: {
           product_data: {
-            name: item["name"],
-            metadata: {
+            name:        item["name"],
+            metadata:    {
               product_id: product.id
             },
-            currency: 'kes',
+            currency:    "kes",
             unit_amount: item["price"].to_i
           }
         }
       }
     end
-    puts "line_items: #{line_items}"
+    Rails.logger.debug { "line_items: #{line_items}" }
 
     # Checkout session
     session = Stripe::Checkout::Session.create(
-      mode: "payment",
-      line_items: line_items,
-      success_url: "http://localhost:3000/success",
-      cancel_url: "http://localhost:3000/cancel",
+      mode:                        "payment",
+      line_items:,
+      success_url:                 "http://localhost:3000/success",
+      cancel_url:                  "http://localhost:3000/cancel",
       shipping_address_collection: {
-        allowed_countries: ['JP', 'KE']
+        allowed_countries: %w[JP KE]
       }
     )
 
