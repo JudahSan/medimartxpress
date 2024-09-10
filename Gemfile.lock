@@ -305,6 +305,8 @@ GEM
       rack (>= 1.1)
       rubocop (>= 1.33.0, < 2.0)
       rubocop-ast (>= 1.31.1, < 2.0)
+    rubocop-rake (0.6.0)
+      rubocop (~> 1.0)
     rubocop-rspec (2.29.1)
       rubocop (~> 1.40)
       rubocop-capybara (~> 2.17)
@@ -404,6 +406,7 @@ DEPENDENCIES
   rubocop-discourse
   rubocop-performance
   rubocop-rails (~> 2.23, >= 2.23.1)
+  rubocop-rake
   selenium-webdriver
   sprockets-rails
   stimulus-rails
