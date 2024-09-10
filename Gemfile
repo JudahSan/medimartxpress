@@ -83,6 +83,8 @@ gem "tailwindcss-rails", "~> 2.3"
 
 gem 'rubocop-rails', '~> 2.23', '>= 2.23.1'
 
+gem 'rubocop-performance', require: false
+
 gem 'rubocop', require: false
 
 gem 'rubocop-discourse', require: false
