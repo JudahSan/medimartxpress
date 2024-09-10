@@ -17,8 +17,6 @@ RSpec.describe "Admin::Categories", type: :request do
   describe "GET /admin/categories" do
     it "returns a success response" do
       get admin_categories_path
-      puts response.body
-      puts response.status
       expect(response).to have_http_status(:ok)
     end
   end

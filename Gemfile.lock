@@ -379,6 +379,7 @@ DEPENDENCIES
   annotate!
   bootsnap
   bundle-audit
+  bundler-audit
   capybara
   debug
   devise (~> 4.9)
