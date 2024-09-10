@@ -92,6 +92,8 @@ GEM
     bindex (0.8.1)
     bootsnap (1.18.3)
       msgpack (~> 1.2)
+    brakeman (6.2.1)
+      racc
     builder (3.2.4)
     bundle-audit (0.1.0)
       bundler-audit
@@ -378,6 +380,7 @@ PLATFORMS
 DEPENDENCIES
   annotate!
   bootsnap
+  brakeman
   bundle-audit
   bundler-audit
   capybara
