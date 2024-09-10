@@ -11,5 +11,6 @@
 #  address        :string
 #
 class Order < ApplicationRecord
+  validates :customer_email, presence: true
   has_many :order_products
 end
