@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class Admin::OrdersController < AdminController
-  before_action :set_admin_order, only: %i[ show edit update destroy ]
+  before_action :set_admin_order, only: %i[show edit update destroy]
 
   # GET /admin/orders or /admin/orders.json
   def index
@@ -27,7 +29,9 @@ class Admin::OrdersController < AdminController
 
     respond_to do |format|
       if @admin_order.save
-        format.html { redirect_to admin_order_url(@admin_order), notice: "Order was successfully created." }
+        format.html do
+          redirect_to admin_order_url(@admin_order), notice: "Order was successfully created."
+        end
         format.json { render :show, status: :created, location: @admin_order }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +44,9 @@ class Admin::OrdersController < AdminController
   def update
     respond_to do |format|
       if @admin_order.update(admin_order_params)
-        format.html { redirect_to admin_order_url(@admin_order), notice: "Order was successfully updated." }
+        format.html do
+          redirect_to admin_order_url(@admin_order), notice: "Order was successfully updated."
+        end
         format.json { render :show, status: :ok, location: @admin_order }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -60,13 +66,14 @@ class Admin::OrdersController < AdminController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_admin_order
-      @admin_order = Order.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def admin_order_params
-      params.require(:order).permit(:customer_email, :fulfilled, :total, :address)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_admin_order
+    @admin_order = Order.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def admin_order_params
+    params.require(:order).permit(:customer_email, :fulfilled, :total, :address)
+  end
 end

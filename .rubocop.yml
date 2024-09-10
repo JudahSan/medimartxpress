@@ -15,6 +15,7 @@ AllCops:
     - node_modules/**/*
     - Gemfile
     - Rakefile
+    - app/models
 
 Style/Encoding:
   Enabled: false

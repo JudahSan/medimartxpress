@@ -6,7 +6,8 @@ RSpec.describe "Admin::Categories", type: :request do
   let(:category) { create(:category) }
   let(:valid_attributes) do
     { name: "New Category", description: "Category Description",
-   image: Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/sample_image.jpeg"), "image/jpeg") }
+   image: Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/sample_image.jpeg"),
+                                       "image/jpeg") }
   end
   let(:invalid_attributes) { { name: " " } }
   before do

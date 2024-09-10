@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class Admin::StocksController < AdminController
-  before_action :set_admin_stock, only: %i[ show edit update destroy ]
+  before_action :set_admin_stock, only: %i[show edit update destroy]
 
   # GET /admin/stocks or /admin/stocks.json
   def index
@@ -31,7 +33,10 @@ class Admin::StocksController < AdminController
 
     respond_to do |format|
       if @admin_stock.save
-        format.html { redirect_to admin_product_stock_url(@product, @admin_stock), notice: "Stock was successfully created." }
+        format.html do
+          redirect_to admin_product_stock_url(@product, @admin_stock),
+                      notice: "Stock was successfully created."
+        end
         format.json { render :show, status: :created, location: @admin_stock }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -44,7 +49,10 @@ class Admin::StocksController < AdminController
   def update
     respond_to do |format|
       if @admin_stock.update(admin_stock_params)
-        format.html { redirect_to admin_product_stock_url(@admin_stock.product, @admin_stock), notice: "Stock was successfully updated." }
+        format.html do
+          redirect_to admin_product_stock_url(@admin_stock.product, @admin_stock),
+                      notice: "Stock was successfully updated."
+        end
         format.json { render :show, status: :ok, location: @admin_stock }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -58,19 +66,22 @@ class Admin::StocksController < AdminController
     @admin_stock.destroy!
 
     respond_to do |format|
-      format.html { redirect_to admin_product_stocks_url, notice: "Stock was successfully destroyed." }
+      format.html do
+        redirect_to admin_product_stocks_url, notice: "Stock was successfully destroyed."
+      end
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_admin_stock
-      @admin_stock = Stock.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def admin_stock_params
-      params.require(:stock).permit(:amount, :size)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_admin_stock
+    @admin_stock = Stock.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def admin_stock_params
+    params.require(:stock).permit(:amount, :size)
+  end
 end
