@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: orders
+#
+#  id             :bigint           not null, primary key
+#  address        :string
+#  customer_email :string
+#  fulfilled      :boolean
+#  total          :integer
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
 require 'rails_helper'
 
 RSpec.describe Order, type: :model do
