@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: categories
@@ -13,6 +15,10 @@ class Category < ApplicationRecord
   #   attachable.variant :thumb, resize_to_limit: [50,50] # reduce image thumbnail size to 50x50
   # end
 
+  # Validation
+  validates :name, presence: true
+  validates :description, presence: true
+
   has_one_attached :image
   # def thumbnail
   #   if image.attached?
@@ -22,7 +28,7 @@ class Category < ApplicationRecord
   #   end
   # end
 
-  has_many :products
+  has_many :products, dependent: :destroy
   def image_as_thumbnail
     image.variant(resize_to_limit: [50, 50]).processed
   end

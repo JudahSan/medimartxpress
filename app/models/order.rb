@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: orders
@@ -11,5 +13,6 @@
 #  address        :string
 #
 class Order < ApplicationRecord
-  has_many :order_products
+  validates :customer_email, presence: true
+  has_many :order_products, dependent: :destroy
 end

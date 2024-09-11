@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
+# Manages stock levels for products within the admin dashboard.
 class Admin::ProductsController < AdminController
-  before_action :set_admin_product, only: %i[ show edit update destroy ]
+  before_action :set_admin_product, only: %i[show edit update destroy]
 
   # GET /admin/products or /admin/products.json
   def index
@@ -7,8 +10,7 @@ class Admin::ProductsController < AdminController
   end
 
   # GET /admin/products/1 or /admin/products/1.json
-  def show
-  end
+  def show; end
 
   # GET /admin/products/new
   def new
@@ -16,8 +18,7 @@ class Admin::ProductsController < AdminController
   end
 
   # GET /admin/products/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /admin/products or /admin/products.json
   def create
@@ -25,7 +26,10 @@ class Admin::ProductsController < AdminController
 
     respond_to do |format|
       if @admin_product.save
-        format.html { redirect_to admin_product_url(@admin_product), notice: "Product was successfully created." }
+        format.html do
+          redirect_to admin_product_url(@admin_product),
+                      notice: t("product_controller.create.success")
+        end
         format.json { render :show, status: :created, location: @admin_product }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -35,47 +39,49 @@ class Admin::ProductsController < AdminController
   end
 
   # PATCH/PUT /admin/products/1 or /admin/products/1.json
-  # Updates a product's attributes, associates new images if provided, and ensures
-  # existing images persist, redirecting on success or rendering the edit page on failure.
+  # Updates a product's attributes and handles image attachments.
   def update
-    # Find the product by its ID
-    @admin_product = Product.find(params[:id])
-
-    # Attempt to update the product with the provided parameters
-    if @admin_product.update(admin_product_params.reject { |k| k["images"] })
-      # If images are provided in the parameters, associate them with the product
-      if admin_product_params["images"]
-        admin_product_params["images"].each do |image|
-          @admin_product.images.attach(image)
-        end
-      end
-      # Redirect to the updated product page with a success notice
-      redirect_to admin_products_path, notice: "Product updated successfully!"
+    if @admin_product.update(product_update_params)
+      attach_images if admin_product_params["images"].present?
+      redirect_to admin_product_url(@admin_product), notice: t("product_controller.update.success")
     else
-      # If update fails, render the edit page again with an error status
       render :edit, status: :unprocessable_entity
     end
   end
-
 
   # DELETE /admin/products/1 or /admin/products/1.json
   def destroy
     @admin_product.destroy!
 
     respond_to do |format|
-      format.html { redirect_to admin_products_url, notice: "Product was successfully destroyed." }
+      format.html do
+        redirect_to admin_products_url, notice: t("product_controller.destroy.success")
+      end
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_admin_product
-      @admin_product = Product.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def admin_product_params
-      params.require(:product).permit(:name, :description, :price, :category_id, :active, images: [])
+  # Use callbacks to share common setup or constraints between actions.
+  def set_admin_product
+    @admin_product = Product.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def admin_product_params
+    params.require(:product).permit(:name, :description, :price, :category_id, :active, images: [])
+  end
+
+  # Filtered parameters for update action.
+  def product_update_params
+    admin_product_params.except(:images)
+  end
+
+  # Attach images to the product.
+  def attach_images
+    admin_product_params["images"].each do |image|
+      @admin_product.images.attach(image)
     end
+  end
 end
