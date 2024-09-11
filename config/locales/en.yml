@@ -34,8 +34,29 @@ en:
       body: "Hello %{name}, welcome to our platform!"
   admin_categories:
     create:
-      success: "Category was successfully created."
+      success: "Category was successfully created!"
     update:
-      success: "Category was successfully updated."
+      success: "Category was successfully updated!"
     destroy:
-      success: "Category was successfully destroyed."
+      success: "Category was successfully destroyed!"
+  stock_categories:
+    create:
+      success: "Category was successfully created!"
+    update:
+      success: "Category was successfully updated!"
+    destroy:
+      success: "Category was successfully destroyed!"
+  product_controller:
+    create:
+      success: "Category was successfully created!"
+    update:
+      success: "Category was successfully updated!"
+    destroy:
+      success: "Category was successfully destroyed!"
+  order_controller:
+    create:
+      success: "Category was successfully created!"
+    update:
+      success: "Category was successfully updated!"
+    destroy:
+      success: "Category was successfully destroyed!"

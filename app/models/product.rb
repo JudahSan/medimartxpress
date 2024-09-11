@@ -30,8 +30,8 @@ class Product < ApplicationRecord
   validates :name, presence: true
 
   belongs_to :category
-  has_many :stocks
-  has_many :order_products
+  has_many :stocks, dependent: :destroy
+  has_many :order_products, dependent: :nullify
   has_many_attached :images
 
   def images_as_thumbnail

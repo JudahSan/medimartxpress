@@ -17,6 +17,7 @@ AllCops:
     - Rakefile
     - app/models
 
+
 Style/Encoding:
   Enabled: false
 
@@ -36,8 +37,35 @@ Layout/HashAlignment:
 Lint/UnusedBlockArgument:
   AutoCorrect: false
 
+Rails/HttpStatus:
+  Enabled: true
+
 Lint/UnusedMethodArgument:
   AutoCorrect: false
 
 Rails/HasAndBelongsToMany:
   Enabled: true
+
+Gemspec/DeprecatedAttributeAssignment:
+  Enabled: true
+
+Lint/AmbiguousAssignment:
+  Enabled: true
+
+Metrics/BlockLength:
+  Max: 50
+
+Metrics/MethodLength:
+  Max: 30
+
+# Exclude specific files or directories from the `Style/ClassAndModuleChildren` cop
+Style/ClassAndModuleChildren:
+  Exclude:
+    - 'app/helpers/admin/stocks_helper.rb'
+    - 'app/helpers/admin/products_helper.rb'
+    - 'app/helpers/admin/orders_helper.rb'
+    - 'app/helpers/admin/categories_helper.rb'
+    - 'app/controllers/admin/stocks_controller.rb'
+    - 'app/controllers/admin/products_controller.rb'
+    - 'app/controllers/admin/orders_controller.rb'
+    - 'app/controllers/admin/categories_controller.rb'

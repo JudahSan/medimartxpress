@@ -55,9 +55,15 @@ RSpec.describe Product, type: :model do
 
   # TODO: Test thumbnail
   # it "returns images as thumbnails" do
-  #     product = Product.create(name: "Laptop", description: "A high-performance laptop", price: 1000, category: Category.create(name: "Electronics", description: "All electronic items"))
+  #     product = Product.create(name: "Laptop",
+  #                              description: "A high-performance laptop",
+  #                              price: 1000,
+  #                              category: Category.create(name: "Electronics",
+  #                                                        description: "All electronic items"))
   #     # Assuming you have a test image attached to the product
-  #     # product.images.attach(io: File.open('path/to/image.jpg'), filename: 'image.jpg', content_type: 'image/jpeg')
-  #     # expect(product.images_as_thumbnail).to be_present
+  #     product.images.attach(io: File.open('path/to/image.jpg'),
+  #                           filename: 'image.jpg',
+  #                           content_type: 'image/jpeg')
+  #     expect(product.images_as_thumbnail).to be_present
   #   end
 end

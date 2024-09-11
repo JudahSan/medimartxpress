@@ -1,5 +1,17 @@
 # frozen_string_literal: true
 
+# Admin::CategoriesController manages the administrative actions related to categories.
+# This includes displaying a list of categories, showing details for a specific category,
+# creating new categories, updating existing categories, and deleting categories.
+#
+# Actions:
+# - index: Lists all categories.
+# - show: Displays details of a specific category.
+# - new: Initializes a new category form.
+# - edit: Prepares an existing category for editing.
+# - create: Handles the creation of a new category.
+# - update: Updates an existing category's attributes.
+# - destroy: Deletes an existing category.
 class Admin::CategoriesController < AdminController
   before_action :set_admin_category, only: %i[show edit update destroy]
 

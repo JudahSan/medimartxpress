@@ -1,11 +1,32 @@
 # frozen_string_literal: true
 
+# CheckoutsController handles the checkout process for the application.
+#
+# This controller is responsible for managing the checkout flow using Stripe's
+# API. It initializes Stripe with the secret key, builds line items from the
+# cart provided by the user, creates a Checkout session with those line items,
+# and returns the session URL for redirection. The session allows users to
+# complete their purchase securely.
 class CheckoutsController < ApplicationController
   def create
+    initialize_stripe
+    line_items = build_line_items(params[:cart])
+    Rails.logger.debug { "line_items: #{line_items}" }
+
+    session = create_checkout_session(line_items)
+
+    render json: { url: session.url }
+  end
+
+  private
+
+  def initialize_stripe
     stripe_secret_key = Rails.application.credentials.dig(:stripe, :secret_key)
     Stripe.api_key = stripe_secret_key
-    cart = params[:cart]
-    line_items = cart.map do |item|
+  end
+
+  def build_line_items(cart)
+    cart.map do |item|
       product = Product.find(item["id"])
       {
         price_data: {
@@ -20,10 +41,10 @@ class CheckoutsController < ApplicationController
         }
       }
     end
-    Rails.logger.debug { "line_items: #{line_items}" }
+  end
 
-    # Checkout session
-    session = Stripe::Checkout::Session.create(
+  def create_checkout_session(line_items)
+    Stripe::Checkout::Session.create(
       mode:                        "payment",
       line_items:,
       success_url:                 "http://localhost:3000/success",
@@ -32,7 +53,5 @@ class CheckoutsController < ApplicationController
         allowed_countries: %w[JP KE]
       }
     )
-
-    render json: { url: session.url }
   end
 end
