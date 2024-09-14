@@ -13,7 +13,7 @@ class CheckoutsController < ApplicationController
 
     # Ensure the cart param exists and isn't empty
     unless params[:cart].present?
-      return render json: { error: 'Cart is empty or missing.' }, status: 400
+      return render json: { error: 'Cart is empty or missing.' }, status: :bad_request
     end
 
     line_items = build_line_items(params[:cart])
@@ -33,28 +33,30 @@ class CheckoutsController < ApplicationController
 
   # Builds line items for Stripe Checkout from the cart
   def build_line_items(cart)
-    cart.map do |item|
-      product = Product.find(item["id"])
+    line_items = []
+
+    cart.each do |item|
+      product = Product.find_by(id: item["id"])
       unless product
-        render json: { error: "Product with ID #{item['id']} not found." }, status: 404
-        return
+        render json: { error: "Product with ID #{item['id']} not found." }, status: :not_found
+        return nil # Return nil to stop further execution in the controller
       end
 
       # Get product stock (adjust based on your model associations)
       product_stock = product.stocks.first # Ensure this association exists
 
       unless product_stock
-        render json: { error: "No stock found for product #{product.name}." }, status: 404
-        return
+        render json: { error: "No stock found for product #{product.name}." }, status: :not_found
+        return nil
       end
 
       if product_stock.amount < item["quantity"].to_i
-        render json: { error: "Limited stock for #{product.name}. Only #{product_stock.amount} remain." }, status: 400
-        return
+        render json: { error: "Limited stock for #{product.name}. Only #{product_stock.amount} remain." }, status: :bad_request
+        return nil
       end
 
-      # Create line item for Stripe
-      {
+      # Add line item for Stripe
+      line_items << {
         quantity: item["quantity"].to_i,
         price_data: {
           currency: default_currency,
@@ -69,6 +71,8 @@ class CheckoutsController < ApplicationController
         }
       }
     end
+
+    line_items
   end
 
   def create_checkout_session(line_items)
@@ -91,6 +95,14 @@ class CheckoutsController < ApplicationController
 
   def cancel_url
     root_url + "cancel"
+  end
+
+  def success
+    render :success
+  end
+
+  def cancel
+    render :cancel
   end
 
   # Set default currency (can be refactored based on region, user preferences, etc.)
