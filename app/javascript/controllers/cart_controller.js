@@ -11,7 +11,7 @@ export default class extends Controller {
 
         let total = 0;
         cart.forEach((item) => {
-            total += item.price * 1;
+            total += item.price * item.quantity;
 
             const div = document.createElement("div");
             div.classList.add(
@@ -72,7 +72,7 @@ export default class extends Controller {
     }
 
     updateTotal(cart) {
-        let total = cart.reduce((acc, item) => acc + (item.price * 1), 0);
+        let total = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
         const totalContainer = document.getElementById("total");
         totalContainer.innerText = `Total: KSH ${total.toLocaleString()}`;
     }
