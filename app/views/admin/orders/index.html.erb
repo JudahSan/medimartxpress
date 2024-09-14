@@ -11,7 +11,7 @@
 
   <!-- Order table start -->
   <div class="mx-auto">
-<!--    Unfulfilled orders start-->
+    <!--    Unfulfilled orders start-->
     <div class="flex flex-col w-full mb-4">
       <div class="overflow-x-auto shadow-md sm:rounded-lg">
         <div class="inline-block min-w-full align-middle">
@@ -55,13 +55,14 @@
               <% end %>
               </tbody>
             </table>
+            <%== pagy_nav(@not_fulfilled_pagy) if @not_fulfilled_pagy.pages > 1 %>
           </div>
         </div>
       </div>
     </div>
-<!--    Unfulfilled orders end-->
+    <!--    Unfulfilled orders end-->
 
-<!--    Fulfilled orders start-->
+    <!--    Fulfilled orders start-->
     <div class="flex flex-col w-full mb-4">
       <div class="overflow-x-auto shadow-md sm:rounded-lg">
         <div class="inline-block min-w-full align-middle">
@@ -105,15 +106,16 @@
               <% end %>
               </tbody>
             </table>
+            <%== pagy_nav(@fulfilled_pagy) if @fulfilled_pagy.pages > 1 %>
           </div>
         </div>
       </div>
     </div>
-<!--Fullfileed orders end-->
+    <!--Fullfileed orders end-->
   </div>
   <!--  Order table end-->
 
-<!--  <div id="admin_orders" class="min-w-full">-->
-    <%#= render @admin_orders %>
-<!--  </div>-->
+  <!--  <div id="admin_orders" class="min-w-full">-->
+  <%#= render @admin_orders %>
+  <!--  </div>-->
 </div>

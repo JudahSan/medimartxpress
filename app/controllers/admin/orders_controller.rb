@@ -18,8 +18,8 @@ class Admin::OrdersController < AdminController
   # GET /admin/orders or /admin/orders.json
   def index
     # split order based on fulfilled status
-    @not_fulfilled_orders = Order.where(fulfilled: false).order(created_at: :asc)
-    @fulfilled_orders = Order.where(fulfilled: true).order(created_at: :asc)
+    @not_fulfilled_pagy, @not_fulfilled_orders = pagy(Order.where(fulfilled: false).order(created_at: :asc))
+    @fulfilled_pagy, @fulfilled_orders = pagy(Order.where(fulfilled: true).order(created_at: :asc), page_param: :page_fulfilled)
   end
 
   # GET /admin/orders/1 or /admin/orders/1.json
