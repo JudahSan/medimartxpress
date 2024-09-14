@@ -4,9 +4,10 @@ module.exports = {
   content: [
     "./app/**/*.html",
     "./app/**/*.erb",
+    "./app/assets/stylesheets/**/*.css",
     "./app/helpers/**/*.rb",
     "./app/javascript/**/*.js",
-    "./node_modules/flowbite/**/*.js"
+    "./node_modules/flowbite/**/*.js",
   ],
   theme: {
     extend: {

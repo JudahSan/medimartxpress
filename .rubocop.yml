@@ -56,7 +56,7 @@ Metrics/BlockLength:
   Max: 50
 
 Metrics/MethodLength:
-  Max: 30
+  Max: 35
 
 # Exclude specific files or directories from the `Style/ClassAndModuleChildren` cop
 Style/ClassAndModuleChildren:

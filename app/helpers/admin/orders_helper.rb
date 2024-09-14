@@ -5,4 +5,6 @@
 # rendering and managing order-related views, helping to organize and reuse code
 # within the admin interface of the application.
 module Admin::OrdersHelper
+  # Include it in the helpers (e.g. application_helper.rb)
+  include Pagy::Frontend
 end

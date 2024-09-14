@@ -55,7 +55,11 @@
               <% end %>
               </tbody>
             </table>
-            <%== pagy_nav(@not_fulfilled_pagy) if @not_fulfilled_pagy.pages > 1 %>
+            <div class="text-center my-4">
+              <div role="navigation" aria-label="Pagination" class="pagy">
+                <%== pagy_nav(@not_fulfilled_pagy) if @not_fulfilled_pagy.pages > 1 %>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -106,7 +110,11 @@
               <% end %>
               </tbody>
             </table>
-            <%== pagy_nav(@fulfilled_pagy) if @fulfilled_pagy.pages > 1 %>
+            <div class="text-center my-4">
+              <div role="navigation" aria-label="Pagination" class="pagy">
+                <%== pagy_nav(@fulfilled_pagy) if @fulfilled_pagy.pages > 1 %>
+              </div>
+            </div>
           </div>
         </div>
       </div>
