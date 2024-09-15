@@ -6,7 +6,15 @@ class Admin::ProductsController < AdminController
 
   # GET /admin/products or /admin/products.json
   def index
-    @pagy, @admin_products = pagy(Product.all)
+    @pagy, @admin_products = pagy(products_query, items: 10)
+  end
+
+  def products_query
+    if params[:query].present?
+      Product.where("name LIKE ?", "%#{params[:query]}%")
+    else
+      Product.all
+    end
   end
 
   # GET /admin/products/1 or /admin/products/1.json
