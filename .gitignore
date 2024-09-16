@@ -108,3 +108,9 @@ yarn-debug.log*
 !/storage/.keep
 /public/uploads
 /node_modules/
+
+/config/credentials/development.key
+
+/config/credentials/production.key
+
+/config/credentials/test.key

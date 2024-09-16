@@ -42,6 +42,15 @@ Rails.application.routes.draw do
   # checkout route
   post "checkout" => 'checkouts#create'
 
+  # Successful checkout
+  get "success" => "checkouts#success"
+
+  # Cancel order
+  get "cancel" => "checkouts#cancel"
+
+  # Webhooks route
+  post "webhooks" => "webhooks#stripe"
+
   # dark-light mode
   get "set_theme", to: "theme#index"
 

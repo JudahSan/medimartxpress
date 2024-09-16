@@ -60,12 +60,19 @@ group :development do
   # gem "spring"
 
   gem 'annotate', git: 'https://github.com/ctran/annotate_models.git'
+
+  gem 'bundler-audit', require: false
+  gem 'brakeman', require: false
 end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem 'rspec-rails', '~> 5.0'
+  gem 'factory_bot_rails' # Optional, for fixtures and test data
+  gem 'faker'             # Optional, for generating fake data
+
 end
 
 gem "devise", "~> 4.9"
@@ -76,8 +83,16 @@ gem "tailwindcss-rails", "~> 2.3"
 
 gem 'rubocop-rails', '~> 2.23', '>= 2.23.1'
 
+gem 'rubocop-performance', require: false
+
 gem 'rubocop', require: false
 
 gem 'rubocop-discourse', require: false
 
 gem 'bundle-audit'
+
+gem 'stripe'
+
+gem 'rubocop-rake', require: false
+
+gem "pagy", "~> 9.0"

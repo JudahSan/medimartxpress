@@ -1,23 +1,37 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: products
 #
 #  id          :bigint           not null, primary key
-#  name        :string
-#  description :text
-#  price       :integer
-#  category_id :bigint           not null
 #  active      :boolean
+#  description :text
+#  name        :string
+#  price       :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  category_id :bigint           not null
+#
+# Indexes
+#
+#  index_products_on_category_id  (category_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (category_id => categories.id)
 #
 class Product < ApplicationRecord
   # has_many_attached :images do |attachable|
   #   attachable.variant :thumb, resize_to_limit: [50, 50]
   # end
+
+  # Validation
+  validates :name, presence: true
+
   belongs_to :category
-  has_many :stocks
-  has_many :order_products
+  has_many :stocks, dependent: :destroy
+  has_many :order_products, dependent: :nullify
   has_many_attached :images
 
   def images_as_thumbnail

@@ -1,5 +1,19 @@
+# frozen_string_literal: true
+
+# Admin::CategoriesController manages the administrative actions related to categories.
+# This includes displaying a list of categories, showing details for a specific category,
+# creating new categories, updating existing categories, and deleting categories.
+#
+# Actions:
+# - index: Lists all categories.
+# - show: Displays details of a specific category.
+# - new: Initializes a new category form.
+# - edit: Prepares an existing category for editing.
+# - create: Handles the creation of a new category.
+# - update: Updates an existing category's attributes.
+# - destroy: Deletes an existing category.
 class Admin::CategoriesController < AdminController
-  before_action :set_admin_category, only: %i[ show edit update destroy ]
+  before_action :set_admin_category, only: %i[show edit update destroy]
 
   # GET /admin/categories or /admin/categories.json
   def index
@@ -7,8 +21,7 @@ class Admin::CategoriesController < AdminController
   end
 
   # GET /admin/categories/1 or /admin/categories/1.json
-  def show
-  end
+  def show; end
 
   # GET /admin/categories/new
   def new
@@ -16,8 +29,7 @@ class Admin::CategoriesController < AdminController
   end
 
   # GET /admin/categories/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /admin/categories or /admin/categories.json
   def create
@@ -25,11 +37,24 @@ class Admin::CategoriesController < AdminController
 
     respond_to do |format|
       if @admin_category.save
-        format.html { redirect_to admin_category_url(@admin_category), notice: "Category was successfully created." }
-        format.json { render :show, status: :created, location: @admin_category }
+        format.html do
+          redirect_to admin_category_url(@admin_category),
+                      notice: t("admin_categories.create.success")
+        end
+        format.json do
+          render :show,
+                 status:   :created,
+                 location: @admin_category
+        end
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @admin_category.errors, status: :unprocessable_entity }
+        format.html do
+          render :new,
+                 status: :unprocessable_entity
+        end
+        format.json do
+          render json:   @admin_category.errors,
+                 status: :unprocessable_entity
+        end
       end
     end
   end
@@ -38,11 +63,24 @@ class Admin::CategoriesController < AdminController
   def update
     respond_to do |format|
       if @admin_category.update(admin_category_params)
-        format.html { redirect_to admin_category_url(@admin_category), notice: "Category was successfully updated." }
-        format.json { render :show, status: :ok, location: @admin_category }
+        format.html do
+          redirect_to admin_category_url(@admin_category),
+                      notice: t("admin_categories.update.success")
+        end
+        format.json do
+          render :show,
+                 status:   :ok,
+                 location: @admin_category
+        end
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @admin_category.errors, status: :unprocessable_entity }
+        format.html do
+          render :edit,
+                 status: :unprocessable_entity
+        end
+        format.json do
+          render json:   @admin_category.errors,
+                 status: :unprocessable_entity
+        end
       end
     end
   end
@@ -52,19 +90,25 @@ class Admin::CategoriesController < AdminController
     @admin_category.destroy!
 
     respond_to do |format|
-      format.html { redirect_to admin_categories_url, notice: "Category was successfully destroyed." }
+      format.html do
+        redirect_to admin_categories_url,
+                    notice: t("admin_categories.destroy.success")
+      end
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_admin_category
-      @admin_category = Category.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def admin_category_params
-      params.require(:category).permit(:name, :description, :image)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_admin_category
+    @admin_category = Category.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def admin_category_params
+    params.require(:category).permit(:name,
+                                     :description,
+                                     :image)
+  end
 end

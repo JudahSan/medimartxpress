@@ -1,0 +1,22 @@
+/* app/assets/stylesheets/pagy.tailwind.css */
+.pagy {
+  @apply flex space-x-1 font-semibold text-sm text-gray-500;
+}
+.pagy a:not(.gap) {
+  @apply block rounded-lg px-3 py-1 bg-gray-200;
+}
+.pagy a:hover {
+  @apply bg-gray-300;
+}
+.pagy a:not([href]) {
+  @apply text-gray-300 bg-gray-100 cursor-default;
+}
+.pagy a.current {
+  @apply text-white bg-gray-400;
+}
+.pagy label {
+  @apply inline-block whitespace-nowrap bg-gray-200 rounded-lg px-3 py-0.5;
+}
+.pagy label input {
+  @apply bg-gray-100 border-none rounded-md;
+}
