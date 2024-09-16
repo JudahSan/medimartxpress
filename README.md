@@ -125,3 +125,8 @@ Adding secret keys
 -
 
 `EDITOR="code --wait" rails credentials:edit --environment=development`
+
+Rubocop
+-
+
+rubocop

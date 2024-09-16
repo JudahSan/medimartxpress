@@ -5,4 +5,6 @@
 # and makes these methods available to all views, allowing for reusable code
 # and consistent functionality across different parts of the application.
 module ApplicationHelper
+  # Include it in the helpers (e.g. application_helper.rb)
+  include Pagy::Frontend
 end

@@ -94,3 +94,5 @@ gem 'bundle-audit'
 gem 'stripe'
 
 gem 'rubocop-rake', require: false
+
+gem "pagy", "~> 9.0"
