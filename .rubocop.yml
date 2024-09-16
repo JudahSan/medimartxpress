@@ -16,7 +16,7 @@ AllCops:
     - Gemfile
     - Rakefile
     - app/models
-    - vendor/**/*'
+    - vendor/**/*
 
 
 Style/Encoding:
