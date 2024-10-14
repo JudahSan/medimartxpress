@@ -41,6 +41,7 @@ module.exports = {
         'system-ui',
         'Segoe UI',
         'Roboto',
+        'sans-serif',
         'Helvetica Neue',
         'Arial',
         'Noto Sans',
