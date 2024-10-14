@@ -202,7 +202,26 @@ docker-compose run web_dev rails db:create
 docker-compose run web_dev rails db:migrate
 ```
 
+## Rebuilding docker image: after updating the Dockerfile, rebuilt the Docker image to apply changes:
+
+```bash
+docker-compose down
+docker-compose build
+docker-compose up
+```
 ---
+
+
+### Image processeing error fix
+
+Some users have experienced this problem `LoadError in Admin::CategoriesController#index - Missing libvips Library` when accessing categories and products after creating them.
+
+- *Fix*: Install the libvips library, which is required for image processing:
+
+```bash
+sudo apt-get install libvips42
+
+```
 
 ### Summary of Key Steps:
 1. Ensure `database.yml` uses `host: db` for development.
