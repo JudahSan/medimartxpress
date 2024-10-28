@@ -155,7 +155,7 @@ GEM
       activesupport (>= 5.0.0)
     json (2.7.2)
     language_server-protocol (3.17.0.3)
-    loofah (2.22.0)
+    loofah (2.23.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     mail (2.8.1)
@@ -170,7 +170,7 @@ GEM
     minitest (5.25.1)
     msgpack (1.7.2)
     mutex_m (0.2.0)
-    net-imap (0.4.10)
+    net-imap (0.5.0)
       date
       net-protocol
     net-pop (0.1.2)
@@ -256,8 +256,7 @@ GEM
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
-    rexml (3.3.6)
-      strscan
+    rexml (3.3.9)
     rspec-core (3.13.1)
       rspec-support (~> 3.13.0)
     rspec-expectations (3.13.3)
@@ -337,7 +336,6 @@ GEM
       railties (>= 6.0.0)
     stringio (3.1.0)
     stripe (12.5.0)
-    strscan (3.1.0)
     tailwindcss-rails (2.3.0)
       railties (>= 6.0.0)
     tailwindcss-rails (2.3.0-aarch64-linux)
