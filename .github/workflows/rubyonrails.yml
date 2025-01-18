@@ -25,10 +25,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       # Add or replace dependency steps here
+      - name: Unfreeze Gemfile.lock
+        run: bundle config set frozen false
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
+      - name: Commit updated Gemfile.lock
+        run: |
+          git add Gemfile.lock
+          git commit -m "Update Gemfile.lock"
+          git push
       # Add or replace database setup steps here
       - name: Set up database schema
         run: bin/rails db:schema:load
