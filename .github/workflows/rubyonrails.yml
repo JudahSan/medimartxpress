@@ -26,6 +26,10 @@ jobs:
         run: bundle config set frozen false
       - name: Install dependencies
         run: bundle install
+      - name: Set Git user identity
+        run: |
+          git config --global user.email "github-actions@github.com"
+          git config --global user.name "GitHub Actions"
       - name: Commit updated Gemfile.lock
         run: |
           git add Gemfile.lock
