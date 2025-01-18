@@ -34,7 +34,7 @@
             <%= c.image.present? ? image_tag(c.image_as_thumbnail) : image_tag("https://via.placeholder.com/50") %>
           </td>
           <td class="py-4 px-6 text-sm font-medium text-purple-900 whitespace-nowrap dark:text-white"><%= c.name %></td>
-          <td class="py-4 px-6 text-sm font-medium text-purple-500 whitespace-nowrap dark:text-white"><%= truncate(c.description, length: 50, separator: ' ') %></td>
+          <td class="py-4 px-6 text-sm font-medium text-purple-500 whitespace-nowrap dark:text-white"><%= truncate(strip_tags(c.description.to_plain_text), length: 50, separator: ' ') %></td>
           <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
             <%= link_to "Edit", edit_admin_category_path(c), class: "text-blue-600 dark:text-blue-500 hover:underline" %>
           </td>

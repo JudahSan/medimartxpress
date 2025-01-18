@@ -4,6 +4,8 @@
   },
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
-    "flowbite": "^2.3.0"
+    "@rails/actiontext": "^8.0.100",
+    "flowbite": "^2.3.0",
+    "trix": "^2.1.12"
   }
 }

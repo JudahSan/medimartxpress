@@ -71,7 +71,7 @@
             <%= p.images.any? ? image_tag(p.images_as_thumbnail) : image_tag("https://via.placeholder.com/50") %>
           </td>
           <td class="py-4 px-6 text-sm font-medium text-purple-900 whitespace-nowrap dark:text-white"><%= truncate(p.name, length: 20, separator: ' ') %></td>
-          <td class="py-4 px-6 text-sm font-medium text-purple-500 whitespace-nowrap dark:text-white"><%= truncate(p.description, length: 20, separator: ' ') %></td>
+          <td class="py-4 px-6 text-sm font-medium text-purple-500 whitespace-nowrap dark:text-white"><%= truncate(strip_tags(p.description.to_plain_text), length: 20, separator: ' ') %></td>
           <td class="py-4 px-6 text-sm font-medium text-purple-900 whitespace-nowrap dark:text-white">
             KSH. <%= number_to_currency(p.price, unit: '', separator: '.', delimeter: ',', precision: 0) %>
           </td>

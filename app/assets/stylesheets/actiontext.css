@@ -1,0 +1,160 @@
+/*
+ * Provides a drop-in pointer for the default Trix stylesheet that will format the toolbar and
+ * the trix-editor content (whether displayed or under editing). Feel free to incorporate this
+ * inclusion directly in any other asset bundle and remove this file.
+ *
+ *= require trix
+*/
+
+/* Default Trix Styles (Light Mode) */
+.trix-content .attachment-gallery > action-text-attachment,
+.trix-content .attachment-gallery > .attachment {
+  flex: 1 0 33%;
+  padding: 0 0.5em;
+  max-width: 33%;
+  border: none; /* Remove border */
+}
+
+.trix-content .attachment-gallery.attachment-gallery--2 > action-text-attachment,
+.trix-content .attachment-gallery.attachment-gallery--2 > .attachment,
+.trix-content .attachment-gallery.attachment-gallery--4 > action-text-attachment,
+.trix-content .attachment-gallery.attachment-gallery--4 > .attachment {
+  flex-basis: 50%;
+  max-width: 50%;
+  border: none; /* Remove border */
+}
+
+.trix-content action-text-attachment .attachment {
+  padding: 0 !important;
+  max-width: 100% !important;
+  border: none; /* Remove border */
+}
+
+/* Dark Mode Styles */
+@media (prefers-color-scheme: dark) {
+  .trix-editor {
+    background-color: #2e2e2e;
+    color: #e0e0e0;
+    border: none; /* Remove border */
+  }
+
+  .trix-button-group {
+    background-color: #7e7a7a;
+    border: none; /* Remove border */
+  }
+
+  .trix-button {
+    color: #e0e0e0;
+    border: none; /* Remove border */
+  }
+
+  .trix-button--icon {
+    fill: #e0e0e0;
+  }
+
+  .trix-content a {
+    color: #9bcdff;
+  }
+
+  .trix-content .attachment-gallery > action-text-attachment,
+  .trix-content .attachment-gallery > .attachment {
+    flex: 1 0 33%;
+    padding: 0 0.5em;
+    max-width: 33%;
+    background-color: #333333;
+    border: none; /* Remove border */
+    border-radius: 8px;
+  }
+
+  .trix-content .attachment-gallery.attachment-gallery--2 > action-text-attachment,
+  .trix-content .attachment-gallery.attachment-gallery--2 > .attachment,
+  .trix-content .attachment-gallery.attachment-gallery--4 > action-text-attachment,
+  .trix-content .attachment-gallery.attachment-gallery--4 > .attachment {
+    flex-basis: 50%;
+    max-width: 50%;
+    border: none; /* Remove border */
+  }
+
+  .trix-content action-text-attachment .attachment {
+    padding: 0 !important;
+    max-width: 100% !important;
+    border: none; /* Remove border */
+  }
+}
+
+/* Responsive Design for Small Screens */
+
+/* Stack items and make the Trix editor and toolbar full width on mobile */
+@media (max-width: 768px) {
+  .trix-editor {
+    width: 100% !important; /* Full width for editor */
+    max-width: 100% !important;
+    border: none; /* Remove border */
+  }
+
+  .trix-button-group {
+    flex-wrap: wrap; /* Allow toolbar buttons to wrap */
+    border: none; /* Remove border */
+  }
+
+  .trix-button {
+    font-size: 14px; /* Adjust font size for smaller screens */
+    padding: 5px; /* Add padding for better touch targets */
+    border: none; /* Remove border */
+  }
+
+  /* Attachments - Stack dynamically when needed */
+  .trix-content .attachment-gallery {
+    display: flex;
+    flex-wrap: wrap; /* Allow flex items to wrap to the next line */
+  }
+
+  .trix-content .attachment-gallery > action-text-attachment,
+  .trix-content .attachment-gallery > .attachment {
+    flex: 1 0 33%; /* Allow each item to take up 1/3 width */
+    max-width: 33%; /* Max width for each attachment */
+    padding: 0.5em; /* Add padding around each attachment */
+    border: none; /* Remove border */
+  }
+
+  .trix-content .attachment-gallery.attachment-gallery--2 > action-text-attachment,
+  .trix-content .attachment-gallery.attachment-gallery--2 > .attachment,
+  .trix-content .attachment-gallery.attachment-gallery--4 > action-text-attachment,
+  .trix-content .attachment-gallery.attachment-gallery--4 > .attachment {
+    flex-basis: 50%; /* Stack items in two columns */
+    max-width: 50%;
+    border: none; /* Remove border */
+  }
+
+  .trix-content action-text-attachment .attachment {
+    padding: 0 !important;
+    max-width: 100% !important;
+    border: none; /* Remove border */
+  }
+
+  /* Text Alignment and Spacing for Small Screens */
+  .trix-content {
+    font-size: 16px;
+  }
+}
+
+/* For very small screens (e.g., phones) */
+@media (max-width: 480px) {
+  .trix-editor {
+    font-size: 14px; /* Further reduce font size */
+    border: none; /* Remove border */
+  }
+
+  .trix-button {
+    font-size: 12px; /* Make buttons smaller for better space utilization */
+    padding: 4px; /* Smaller padding */
+    border: none; /* Remove border */
+  }
+
+  .trix-content .attachment-gallery > action-text-attachment,
+  .trix-content .attachment-gallery > .attachment {
+    flex: 1 0 100%; /* Ensure gallery items are stacked */
+    max-width: 100%;
+    border: none; /* Remove border */
+  }
+}
