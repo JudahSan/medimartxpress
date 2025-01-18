@@ -1,6 +1,3 @@
-Here is a well-arranged version of your project README:
-
----
 
 # UHM Ordering System - Ruby on Rails Backend
 
@@ -232,5 +229,5 @@ sudo apt-get install libvips42
 ---
 
 ## Future Enhancements
-- **Port to Android using Turbo Native** (TODO)
+- **Port to Android using Turbo Native**: [WIP](https://github.com/JudahSan/medimartxpress-android)
 - **Tailwind CSS error fix `The asset "tailwind.css" is not present in the asset pipeline.` ** (TODO)
