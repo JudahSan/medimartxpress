@@ -29,6 +29,8 @@ class Category < ApplicationRecord
   # end
 
   has_many :products, dependent: :destroy
+
+  has_rich_text :description
   def image_as_thumbnail
     image.variant(resize_to_limit: [50, 50]).processed
   end

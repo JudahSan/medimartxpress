@@ -33,6 +33,7 @@ class Product < ApplicationRecord
   has_many :stocks, dependent: :destroy
   has_many :order_products, dependent: :nullify
   has_many_attached :images
+  has_rich_text :description
 
   def images_as_thumbnail
     images.first.variant(resize_to_fill: [50, 50]).processed
