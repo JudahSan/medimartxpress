@@ -1,5 +1,5 @@
-
-# UHM Ordering System - Ruby on Rails Backend
+[![Ruby on Rails CI](https://github.com/JudahSan/medimartxpress/actions/workflows/rubyonrails.yml/badge.svg?branch=master)](https://github.com/JudahSan/medimartxpress/actions/workflows/rubyonrails.yml)
+# Medimartxpress
 
 ## Introduction
 This project is a Ruby on Rails backend for an ordering system. It handles the processing of orders, customer management, and integration with legacy systems.
